@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "681063367438",
+    "project_id": "seatshare-admin",
+    "storage_bucket": "seatshare-admin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681063367438:android:2b63e67d9e8f44e67e8d5f",
+        "android_client_info": {
+          "package_name": "com.reactnavigationv6"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "681063367438-doe3eivildmjiekd2o26h0evhb2deo1h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ3yob5cArGfxS3wS-HmY6vbRw4N1pF9Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "681063367438-doe3eivildmjiekd2o26h0evhb2deo1h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
