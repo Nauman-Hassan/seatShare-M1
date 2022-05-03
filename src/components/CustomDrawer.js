@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   View,
   Text,
@@ -15,12 +14,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {useDispatch, useSelector} from 'react-redux';
 import { LogoutAction } from '../store/actions/LogoutAction';
-
+import React, {useState, useEffect} from 'react';
+import { GetUserWishlistAction } from '../store/actions/GetUserWishlistAction';
 
 const CustomDrawer = props => {
   const dispatch = useDispatch();
   const activeUser = useSelector(state => state.LoginReducer.activeUser.data);
   console.log('activeUser in App--->', activeUser);
+dispatch(GetUserWishlistAction(activeUser.id));
   return (
     <View style={{flex: 1}}>
       <DrawerContentScrollView

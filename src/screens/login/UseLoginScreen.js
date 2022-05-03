@@ -7,7 +7,7 @@ import { Alert} from 'react-native';
 export function UseLoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-//   const [loginLoading, setLoginLoading] = useState(false);
+ 
 
   const dispatch = useDispatch();
   const ctaLogin = () => {
@@ -17,10 +17,12 @@ export function UseLoginScreen() {
        return;
      }
 
-    dispatch(LoginAction(email.toLowerCase(), password));
+    dispatch(
+      LoginAction(email.toLowerCase(), password, ),
+    );
     setEmail('');
     setPassword('');
   };
 
-  return [email, setEmail, password, setPassword, ctaLogin];
+  return [email, setEmail, password, setPassword, ctaLogin, ];
 }

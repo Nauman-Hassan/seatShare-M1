@@ -3,7 +3,7 @@ import {endPoint} from '../../config/EndPoint';
 import {USER_LOGIN} from '../TypeConstants';
 
 export const SignUpAction =
-  (name, email, mobile, password, confirmPassword) =>
+  (name, email, mobile, password, confirmPassword ) =>
   async (dispatch) => {
     console.log('Signup act', name, email, mobile, password, confirmPassword);
 

@@ -5,6 +5,7 @@ import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import { UseMyAdScreen } from './UseMyAdScreen'
 import {freeGames} from "../../model/data"
 import ListItem from '../../components/ListItem';
+import {useDispatch, useSelector} from 'react-redux';
 
 const MyAdScreen = ({navigation}) => {
   const [ctaMyAd, myAds] = UseMyAdScreen();
@@ -26,7 +27,7 @@ const MyAdScreen = ({navigation}) => {
             }}>
             {myAds.map(item => (
               <ListItem
-                key={item.id}
+                key={item.startPlace}
                 // photo={item.poster}
                 title={item.email}
                 subTitle={item.name}

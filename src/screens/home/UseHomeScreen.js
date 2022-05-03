@@ -9,6 +9,7 @@ const dispatch = useDispatch();
   //    dispatch(HomeAdsAction());
   //  }, []);
   const homeAds = useSelector(state => state.HomeAdsReducer.homeAllAds.data);
+  console.log("active user in home for", homeAds.id);
 
   return [homeAds];
   

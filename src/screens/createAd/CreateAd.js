@@ -40,6 +40,10 @@ const CreateAd = ({navigation}) => {
     setUserVehicle,
     userImage,
     setUserImage,
+    userVehicleNumber,
+    setUserVehicleNumber,
+    travelCharges,
+    setTravelCharges,
   ] = UseCreateAd();
 
 
@@ -81,7 +85,7 @@ const CreateAd = ({navigation}) => {
 
         <ScrollView
           showsVerticalScrollIndicator={false}
-          style={{width: '100%'}}>
+          style={{width: '100%' , height:"100%"}}>
           <View style={SignUpScreenStyle.ImageView}>
             <TextInput
               placeholder="Your Start Point"
@@ -107,6 +111,18 @@ const CreateAd = ({navigation}) => {
                 setUserEPoint(e);
               }}
               defaultValue={userEPoint}
+            />
+            <TextInput
+              placeholder="Your Vehicle Number"
+              variant="outlined"
+              placeholderTextColor={'#29AB87'}
+              style={SignUpScreenStyle.userinp}
+              color={'#29AB87'}
+              inputStyle={{color: '#29AB87'}}
+              onChangeText={e => {
+                setUserVehicleNumber(e);
+              }}
+              defaultValue={userVehicleNumber}
             />
             <View
               style={SignUpScreenStyle.userinp12}
@@ -137,6 +153,26 @@ const CreateAd = ({navigation}) => {
               />
             ) : null}
 
+            <View style={SignUpScreenStyle.userinp1}>
+              <Picker
+                style={{color: '#29AB87'}}
+                dropdownIconColor={'#29AB87'}
+                dropdownIconRippleColor={'#29AB87'}
+                selectedValue={travelCharges}
+                onValueChange={(itemValue, itemIndex) =>
+                  setTravelCharges(itemValue)
+                }>
+                <Picker.Item label=" - - Select Travel Charges - - " disabled />
+                <Picker.Item label="Rs. 10" value="10" />
+                <Picker.Item label="Rs. 20" value="20" />
+                <Picker.Item label="Rs. 30" value="30" />
+                <Picker.Item label="Rs. 40" value="40" />
+                <Picker.Item label="Rs. 50" value="50" />
+                <Picker.Item label="Rs. 60" value="60" />
+                <Picker.Item label="Rs. 70" value="70" />
+                <Picker.Item label="Free" value="free" />
+              </Picker>
+            </View>
             <View style={SignUpScreenStyle.userinp1}>
               <Picker
                 style={{color: '#29AB87'}}

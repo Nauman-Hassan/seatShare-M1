@@ -4,8 +4,17 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import { Button} from '@react-native-material/core';
 import LoginScreenStyle from './login/LoginScreenStyle';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
+import { AddWishlistAction } from '../store/actions/AddWishlistAction';
 
 const AdsDetailsScreen = ({navigation, route}) => {
+  const activeUser = useSelector(state => state.LoginReducer.activeUser.data);
+  console.log('id of activeUser in App--->', activeUser.id);
+
+  const dispatch = useDispatch();
+
+
   return (
     <View
       style={{
@@ -38,6 +47,17 @@ const AdsDetailsScreen = ({navigation, route}) => {
           size={50}
           color="white"
           style={{marginRight: 15}}
+          onPress={()=>{
+            console.log('i am running', route.params)
+            route.params.heartUser = activeUser.id;
+            route.params.userVehicleNumber = 'FSD-1234';
+            route.params.travelCharges =  "10";
+            console.log('i am running after', route.params);
+            dispatch(AddWishlistAction(route.params));
+
+          }
+          }
+            
         />
       </View>
 

@@ -9,7 +9,7 @@ export function UseSignUpScreen() {
   const [mobile, setMobile] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  //   const [loginLoading, setLoginLoading] = useState(false);
+    // const [signupLoading, setSignupLoading] = useState(false);
 
   const dispatch = useDispatch();
   const ctaSignup = () => {
@@ -35,6 +35,7 @@ export function UseSignUpScreen() {
         mobile,
         password,
         confirmPassword,
+        
       ),
     );
 

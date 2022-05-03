@@ -55,6 +55,7 @@ const SignUpScreenStyle = StyleSheet.create({
     marginVertical: '2%',
     paddingHorizontal: '7%',
     paddingVertical: 5,
+    marginBottom:90
   },
   SignUpText: {
     fontSize: 20,

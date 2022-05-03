@@ -12,7 +12,9 @@ import {useSelector} from 'react-redux';
 
 function App() {
    const authState = useSelector(state => state.LoginReducer.isLogIn);
+   const loadState = useSelector(state => state.LoginReducer.loading);
    console.log("authstate--->", authState);
+   console.log("loadingstate--->", loadState);
   // const authState = false
   return (
     

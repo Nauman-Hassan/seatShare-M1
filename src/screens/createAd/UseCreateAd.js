@@ -20,6 +20,8 @@ export function UseCreateAd() {
     const [userTravelDay, setUserTravelDay] = useState('');
     const [userVehicle, setUserVehicle] = useState('');
     const [userImage, setUserImage] = useState('');
+    const [userVehicleNumber, setUserVehicleNumber] = useState('');
+    const [travelCharges, setTravelCharges] = useState('');
 
 
   const dispatch = useDispatch();
@@ -38,6 +40,8 @@ export function UseCreateAd() {
     console.log('user city', userCity);
     console.log('user vehicle', userVehicle);
     console.log('user Image', userImage);
+    console.log('user vehicle number', userVehicleNumber);
+    console.log('user charges', travelCharges);
     dispatch(
       CreateAdAction(
         activeUser.name,
@@ -48,9 +52,18 @@ export function UseCreateAd() {
         userTravelDay,
         userVehicle,
         userSTime,
+        userVehicleNumber,
+        travelCharges,
       ),
     );
 
+    setUserSPoint('')
+    setUserEPoint('')
+    setUserSTime('')
+    setUserTravelDay('')
+    setUserVehicle('')
+    setUserVehicleNumber('')
+    setTravelCharges('')
     
   };
 
@@ -70,5 +83,9 @@ export function UseCreateAd() {
     setUserVehicle,
     userImage,
     setUserImage,
+    userVehicleNumber,
+    setUserVehicleNumber,
+    travelCharges,
+    setTravelCharges,
   ];
 }

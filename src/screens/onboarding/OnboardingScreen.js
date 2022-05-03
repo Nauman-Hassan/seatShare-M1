@@ -62,20 +62,35 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 
 import React, {Component} from 'react';
-import {Text, View, Platform, Image, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  Platform,
+  Image,
+  TouchableOpacity,
+  
+} from 'react-native';
 // import Loader from '../../commonComponents/Loader';
 import { Button} from '@react-native-material/core';
 import OnboardingScreenStyle from './OnboardingScreenStyle';
+import {useDispatch, useSelector} from 'react-redux';
+import {HomeAdsAction} from '../../store/actions/HomeAction';
+
 
 const OnboardingScreen = ({navigation}) => {
+  const dispatch = useDispatch();
+  dispatch(HomeAdsAction())
+
   return (
     <View style={OnboardingScreenStyle.container}>
+
       <View style={OnboardingScreenStyle.small}>
         <Image
           source={require('../../assets/photo/logo.png')}
           style={OnboardingScreenStyle.smallImage}
         />
       </View>
+
       <TouchableOpacity
         style={{
           backgroundColor: '#29AB87',
@@ -108,10 +123,8 @@ const OnboardingScreen = ({navigation}) => {
         title="Already have an account ?"
         color="#29AB87"
         style={{
-          
           marginBottom: 20,
           marginTop: 20,
-          
         }}
       />
     </View>

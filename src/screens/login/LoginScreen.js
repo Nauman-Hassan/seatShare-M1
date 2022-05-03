@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
-import {Text, View, Image, ScrollView, SafeAreaView} from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  ScrollView,
+  SafeAreaView,
+  ActivityIndicator,
+  Linking,
+} from 'react-native';
 import {useState} from 'react';
 
 import LoginScreenStyle from './LoginScreenStyle';
@@ -8,7 +16,11 @@ import {Stack, TextInput, Button} from '@react-native-material/core';
 import { UseLoginScreen } from './UseLoginScreen';
 
 function LoginScreen  () {
-  const [email, setEmail, password, setPassword, ctaLogin] = UseLoginScreen()
+  const [email, setEmail, password, setPassword, ctaLogin, myLoad] =
+    UseLoginScreen();
+      const [load, setLoad] = useState(false);
+      
+
   return (
     <>
       <SafeAreaView>
@@ -51,10 +63,23 @@ function LoginScreen  () {
             <Button
               uppercase={false}
               variant="text"
-              title="Forgot Password?"
+              title="Do You Want To Start Trail?"
               color="#29AB87"
+              onPress={() =>
+                Linking.openURL('https://seatshare-admin.web.app/')
+              }
             />
 
+            {/* {myLoad ? (
+              <ActivityIndicator size="large" color="#00ff00" />
+            ) : (
+              <Button
+                title="Login"
+                style={LoginScreenStyle.loginBtn}
+                uppercase={true}
+                onPress={ctaLogin}
+              />
+            )} */}
             <Button
               title="Login"
               style={LoginScreenStyle.loginBtn}
