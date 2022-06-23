@@ -7,6 +7,8 @@ import HomeScreen from '../screens/HomeScreen';
 import CreateAd from '../screens/createAd/CreateAd';
 import FavouriteScreen from '../screens/favourite/FavouriteScreen';
 import AdsDetailsScreen from '../screens/AdsDetailsScreen';
+import MyAdScreen from '../screens/myAdScreen/MyAdScreen';
+import ProfileScreen from '../screens/profile/ProfileScreen';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
@@ -86,12 +88,32 @@ const TabNavigator = () => {
           ),
         }}
       />
+
+      <Tab.Screen
+        name="My Ads"
+        component={MyAdScreen}
+        options={{
+        
+          tabBarIcon: ({color, size}) => (
+            <Feather name="shopping-bag" color={color} size={22} />
+          ),
+        }}
+      />
       <Tab.Screen
         name="Favourite"
         component={FavouriteScreen}
         options={{
           tabBarIcon: ({color, size}) => (
             <Ionicons name="heart-outline" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile1"
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <Ionicons name="person-outline" color={color} size={size} />
           ),
         }}
       />

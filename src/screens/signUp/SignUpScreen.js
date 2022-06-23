@@ -5,6 +5,7 @@ import {
   Image,
   ScrollView,
   SafeAreaView,
+  ActivityIndicator,
   KeyboardAvoidingView,
 } from 'react-native';
 import {useState} from 'react';
@@ -27,6 +28,7 @@ const SignUpScreen = () => {
     confirmPassword,
     setConfirmPassword,
     ctaSignup,
+    signupLoading,
   ] = UseSignUpScreen();
   return (
     <>
@@ -107,13 +109,23 @@ const SignUpScreen = () => {
               }}
               defaultValue={confirmPassword}
             />
-
-            <Button
-              title="SignUp"
-              style={SignUpScreenStyle.SignUpBtn}
-              uppercase={true}
-              onPress={ctaSignup}
-            />
+            {signupLoading ? (
+              <ActivityIndicator
+                size="large"
+                color="#29AB87"
+                animating={true}
+                style={{paddingTop: 30}}
+              />
+            ) : (
+              <>
+                <Button
+                  title="SignUp"
+                  style={SignUpScreenStyle.SignUpBtn}
+                  uppercase={true}
+                  onPress={ctaSignup}
+                />
+              </>
+            )}
           </View>
         </ScrollView>
       </SafeAreaView>

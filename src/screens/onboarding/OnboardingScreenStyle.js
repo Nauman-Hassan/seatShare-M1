@@ -21,5 +21,10 @@ const OnboardingScreenStyle = StyleSheet.create({
     paddingHorizontal: '7%',
     paddingVertical: 5,
   },
+  smallImage: {
+    paddingHorizontal: 170,
+    height: 100,
+    width: 150,
+  },
 });
 export default OnboardingScreenStyle;

@@ -5,13 +5,13 @@ import { GetUserWishlistAction } from '../../store/actions/GetUserWishlistAction
 
 export function UseFavouriteScreen() {
   const dispatch = useDispatch();
-  const activeUser = useSelector(state => state.LoginReducer.activeUser.data);
+  const activeUser = useSelector(state => state.LoginReducer.activeUser.data.id);
  
   const ctaMyWishlist = () => {
     console.log('activeUser in my wishlist--->', activeUser.id);
-    dispatch(GetUserWishlistAction(activeUser.id));
+    dispatch(GetUserWishlistAction(activeUser));
   };
     const myAds = useSelector(state => state.WishlistReducer.wishlistAds.data);
     console.log('my own ads in use outer', myAds);
-  return [ctaMyWishlist, myAds];
+  return {ctaMyWishlist, myAds, };
 }

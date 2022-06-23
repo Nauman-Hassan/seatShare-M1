@@ -26,7 +26,7 @@ var requestOptions = {
   )
     .then(response => response.text())
     .then(result => {
-      console.log(result);
+      console.log('wishlist res in action ', JSON.parse(result));
       if (JSON.parse(result).status === 'success') {
         console.log('dispatch is run');
         dispatch({

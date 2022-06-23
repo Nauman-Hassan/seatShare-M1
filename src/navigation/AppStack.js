@@ -41,12 +41,12 @@ const AuthStack = () => {
       />
 
       <Drawer.Screen
-        name="My Ads"
+        name="My Ads1"
         component={MyAdScreen}
         options={{
-          headerShown: true,
+          // headerShown: true,
           headerStyle: {
-            backgroundColor: '#1B2635',
+            backgroundColor: '#fff',
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -62,9 +62,9 @@ const AuthStack = () => {
         name="Profile"
         component={ProfileScreen}
         options={{
-          headerShown: true,
+          // headerShown: true,
           headerStyle: {
-            backgroundColor: '#1B2635',
+            backgroundColor: '#fff',
           },
           headerTintColor: '#fff',
           headerTitleStyle: {

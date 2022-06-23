@@ -10,13 +10,18 @@ import {
 } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import {Stack, TextInput, Button} from '@react-native-material/core';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import SignUpScreenStyle from '../signUp/SignUpScreenStyle';
 import {Picker} from '@react-native-picker/picker';
 import {useEffect, useState, useRef} from 'react';
 import RNDateTimePicker from '@react-native-community/datetimepicker';
 import { UseCreateAd } from './UseCreateAd';
+import {useDispatch, useSelector} from 'react-redux';
+import { LogoutAction } from '../../store/actions/LogoutAction';
+
 
 const CreateAd = ({navigation}) => {
+  const dispatch =useDispatch()
   const setDate = (event, time) => {
     console.log("EVENT", event);
     console.log("TIME", time);
@@ -75,8 +80,14 @@ const CreateAd = ({navigation}) => {
           Create Ads
         </Text>
 
-        <TouchableOpacity onPress={() => navigation.openDrawer()}>
+        {/* <TouchableOpacity onPress={() => navigation.openDrawer()}>
           <Feather name="menu" size={30} color="#1B2635" />
+        </TouchableOpacity> */}
+        <TouchableOpacity
+          onPress={() => {
+            dispatch(LogoutAction());
+          }}>
+          <AntDesign name="poweroff" size={25} color="#1B2635" />
         </TouchableOpacity>
       </View>
 
@@ -85,7 +96,7 @@ const CreateAd = ({navigation}) => {
 
         <ScrollView
           showsVerticalScrollIndicator={false}
-          style={{width: '100%' , height:"100%"}}>
+          style={{width: '100%', height: '100%'}}>
           <View style={SignUpScreenStyle.ImageView}>
             <TextInput
               placeholder="Your Start Point"

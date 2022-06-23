@@ -10,7 +10,7 @@ function LoginReducer(state = initialState, action) {
   switch (action.type) {
     case USER_LOGIN: {
       // let evalData = eval(action.type);
-      console.log('reducer login', action.payload);
+      // console.log('reducer login', action.payload);
       return {
         ...state,
         isLogIn: true,

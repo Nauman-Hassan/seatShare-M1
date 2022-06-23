@@ -8,6 +8,7 @@ import AppStack from './src/navigation/AppStack';
 import {Provider} from 'react-redux';
 import  store from "./src/config/Store"
 import {useSelector} from 'react-redux';
+import TabNavigator from './src/navigation/TabNavigator';
 
 
 function App() {
@@ -17,13 +18,13 @@ function App() {
    console.log("loadingstate--->", loadState);
   // const authState = false
   return (
-    
-      <Provider store={store}>
-        <NavigationContainer>
-          {authState ? <AppStack /> : <AuthStack />}
-        </NavigationContainer>
-      </Provider>
-    
+    // <Provider store={store}>
+    <NavigationContainer>
+      {/* <AuthStack /> */}
+
+      {authState ? <TabNavigator /> : <AuthStack />}
+    </NavigationContainer>
+    // </Provider>
   );
 }
 

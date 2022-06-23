@@ -9,6 +9,8 @@ import {
   Linking,
 } from 'react-native';
 import {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+
 
 import LoginScreenStyle from './LoginScreenStyle';
 
@@ -16,9 +18,14 @@ import {Stack, TextInput, Button} from '@react-native-material/core';
 import { UseLoginScreen } from './UseLoginScreen';
 
 function LoginScreen  () {
-  const [email, setEmail, password, setPassword, ctaLogin, myLoad] =
+  const {email, setEmail, password, setPassword, ctaLogin, myLoad} =
     UseLoginScreen();
-      const [load, setLoad] = useState(false);
+      const LoginLoader = useSelector(
+        state => state.LoaderReducer.isLoginLoader,
+      );
+      
+
+      console.log(' state from loader=> in com', LoginLoader);
       
 
   return (
@@ -70,22 +77,23 @@ function LoginScreen  () {
               }
             />
 
-            {/* {myLoad ? (
-              <ActivityIndicator size="large" color="#00ff00" />
-            ) : (
-              <Button
-                title="Login"
-                style={LoginScreenStyle.loginBtn}
-                uppercase={true}
-                onPress={ctaLogin}
+            {LoginLoader ? (
+              <ActivityIndicator
+                size="large"
+                color="#29AB87"
+                animating={true}
+                style={{paddingTop: 30}}
               />
-            )} */}
-            <Button
-              title="Login"
-              style={LoginScreenStyle.loginBtn}
-              uppercase={true}
-              onPress={ctaLogin}
-            />
+            ) : (
+              <>
+                <Button
+                  title="Login"
+                  style={LoginScreenStyle.loginBtn}
+                  uppercase={true}
+                  onPress={ctaLogin}
+                />
+              </>
+            )}
           </View>
         </ScrollView>
       </SafeAreaView>

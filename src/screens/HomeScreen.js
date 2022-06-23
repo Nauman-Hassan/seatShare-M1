@@ -10,15 +10,17 @@ import {
 } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import Feather from 'react-native-vector-icons/Feather';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import BannerSlider from '../components/BannerSlider';
 import {windowWidth} from '../utils/Dimensions';
-
+import {useDispatch, useSelector} from 'react-redux';
+import {LogoutAction} from "../store/actions/LogoutAction"
 import {freeGames, paidGames, sliderData} from '../model/data';
 import CustomSwitch from '../components/CustomSwitch';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import ListItem from '../components/ListItem';
 import {color} from 'react-native-reanimated';
-import {useDispatch, useSelector} from 'react-redux';
 import { HomeAdsAction } from '../store/actions/HomeAction';
 import { UseHomeScreen } from './home/UseHomeScreen';
 
@@ -60,8 +62,11 @@ export default function HomeScreen({navigation}) {
           Home
         </Text>
 
-        <TouchableOpacity onPress={() => navigation.openDrawer()}>
-          <Feather name="menu" size={30} color="#1B2635" />
+        <TouchableOpacity
+          onPress={() => {
+            dispatch(LogoutAction());
+          }}>
+          <AntDesign name="poweroff" size={25} color="#1B2635" />
         </TouchableOpacity>
       </View>
 
@@ -113,7 +118,7 @@ export default function HomeScreen({navigation}) {
             sliderWidth={windowWidth - 50}
             itemWidth={200}
             loop={true}
-            style={{marginLeft: 30}}
+            style={{marginLeft: 30, marginTop: 50}}
           />
 
           <Text
@@ -126,18 +131,16 @@ export default function HomeScreen({navigation}) {
             }}>
             All Ads
           </Text>
-          {
-            homeAds.map(item => (
-              <ListItem
-                key={item.id}
-                // photo={`https://drive.google.com/file/d/1kO8T07AxWIm3H3UM2hBN7d1kMe3qdacD/view?usp=sharing`}
-                title={item.email}
-                subTitle={item.name}
-                isFree={item.isFree}
-                onPress={() => navigation.navigate('AdsDetails', item)}
-                
-              />
-            ))}
+          {homeAds.map(item => (
+            <ListItem
+              key={item.id}
+              // photo={`https://drive.google.com/file/d/1kO8T07AxWIm3H3UM2hBN7d1kMe3qdacD/view?usp=sharing`}
+              title={item.email}
+              subTitle={item.name}
+              isFree={item.isFree}
+              onPress={() => navigation.navigate('AdsDetails', item)}
+            />
+          ))}
         </ScrollView>
       </SafeAreaView>
     </View>
