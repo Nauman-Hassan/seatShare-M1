@@ -31,6 +31,7 @@ export default function HomeScreen({navigation}) {
   //   dispatch(HomeAdsAction())
   // }, []);
   const [adCategory, setAdCategory] = useState(1);
+  const [search, setSearch] = useState("");
 
   const renderBanner = ({item, index}) => {
     return <BannerSlider data={item} />;
@@ -89,14 +90,21 @@ export default function HomeScreen({navigation}) {
           style={{marginRight: 5, marginTop: 12}}
         />
         <TextInput
-          placeholder="Search"
+          placeholder="Find city, vehicle . . ."
           placeholderTextColor={'#29AB87'}
+          onChangeText={e => {
+            setSearch(e);
+          }}
           style={{color: '#29AB87', fontSize: 20}}
         />
       </View>
-      <SafeAreaView>
-        <ScrollView style={{padding: 20}} showsVerticalScrollIndicator={false}>
-          <View
+      <SafeAreaView style={{flex: 1}}>
+        <ScrollView
+          style={{padding: 20}}
+          contentContainerStyle={{flexGrow: 1}}
+          vertical={true}
+          showsVerticalScrollIndicator={false}>
+          {/* <View
             style={{
               marginVertical: 15,
               flexDirection: 'row',
@@ -119,7 +127,7 @@ export default function HomeScreen({navigation}) {
             itemWidth={200}
             loop={true}
             style={{marginLeft: 30, marginTop: 50}}
-          />
+          /> */}
 
           <Text
             style={{
@@ -131,16 +139,23 @@ export default function HomeScreen({navigation}) {
             }}>
             All Ads
           </Text>
-          {homeAds.map(item => (
-            <ListItem
-              key={item.id}
-              // photo={`https://drive.google.com/file/d/1kO8T07AxWIm3H3UM2hBN7d1kMe3qdacD/view?usp=sharing`}
-              title={item.email}
-              subTitle={item.name}
-              isFree={item.isFree}
-              onPress={() => navigation.navigate('AdsDetails', item)}
-            />
-          ))}
+          {homeAds
+            .filter(
+              item =>
+                item.userCity?.indexOf(search) !== -1 ||
+                item.name?.indexOf(search) !== -1 ||
+                item.vehicleType?.indexOf(search) !== -1,
+            )
+            .map(item => (
+              <ListItem
+                key={item.id}
+                // photo={`https://drive.google.com/file/d/1kO8T07AxWIm3H3UM2hBN7d1kMe3qdacD/view?usp=sharing`}
+                title={item.userCity}
+                subTitle={item.name}
+                isFree={item.isFree}
+                onPress={() => navigation.navigate('AdsDetails', item)}
+              />
+            ))}
         </ScrollView>
       </SafeAreaView>
     </View>

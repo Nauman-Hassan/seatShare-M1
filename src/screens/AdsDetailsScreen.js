@@ -7,6 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 import { AddWishlistAction } from '../store/actions/AddWishlistAction';
+import { args, PhoneCall } from '../store/actions/PhoneCallAction';
 
 const AdsDetailsScreen = ({navigation, route}) => {
   const activeUser = useSelector(state => state.LoginReducer.activeUser.data);
@@ -21,7 +22,7 @@ const AdsDetailsScreen = ({navigation, route}) => {
         flex: 1,
         // justifyContent: 'center',
         // alignItems: 'center',
-        backgroundColor: '#29AB87',
+        backgroundColor: '#fff',
       }}>
       <View
         style={{
@@ -29,9 +30,9 @@ const AdsDetailsScreen = ({navigation, route}) => {
           height: 150,
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: '#29AB87',
+          backgroundColor: '#fff',
         }}>
-        <Image source={require('../assets/images/homescreen/bike.png')} />
+        <Image source={require('../assets/photo/adImage.png')} />
       </View>
       <View
         style={{
@@ -45,19 +46,16 @@ const AdsDetailsScreen = ({navigation, route}) => {
         <Ionicons
           name="heart-outline"
           size={50}
-          color="white"
+          color="#29AB87"
           style={{marginRight: 15}}
-          onPress={()=>{
-            console.log('i am running', route.params)
+          onPress={() => {
+            console.log('i am running', route.params);
             route.params.heartUser = activeUser.id;
             route.params.userVehicleNumber = 'FSD-1234';
-            route.params.travelCharges =  "10";
+            route.params.travelCharges = '10';
             console.log('i am running after', route.params);
             dispatch(AddWishlistAction(route.params));
-
-          }
-          }
-            
+          }}
         />
       </View>
 
@@ -87,7 +85,7 @@ const AdsDetailsScreen = ({navigation, route}) => {
               fontSize: 16,
               paddingTop: 5,
             }}>
-            {route.params?.email}
+            {route.params?.userCity}
           </Text>
         </View>
         <Text style={{paddingLeft: 20}}>
@@ -197,6 +195,9 @@ const AdsDetailsScreen = ({navigation, route}) => {
             title="Contact me"
             style={LoginScreenStyle.loginBtn}
             uppercase={true}
+            onPress={() => {
+              PhoneCall(route.params.mobile);
+            }}
           />
         </View>
       </View>

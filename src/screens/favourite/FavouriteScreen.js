@@ -76,7 +76,7 @@ const activeUser = useSelector(state => state.LoginReducer.activeUser.data.id);
               <ListItem
                 key={item.cardTime}
                 // photo={item.poster}
-                title={item.email}
+                title={item.userCity}
                 subTitle={item.name}
                 isFree={item.isFree}
                 onPress={() => navigation.navigate('AdsDetails', item)}

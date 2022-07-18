@@ -42,6 +42,7 @@ export function UseCreateAd() {
     console.log('user Image', userImage);
     console.log('user vehicle number', userVehicleNumber);
     console.log('user charges', travelCharges);
+    console.log('user charges', activeUser.mobile);
     dispatch(
       CreateAdAction(
         activeUser.name,
@@ -54,6 +55,8 @@ export function UseCreateAd() {
         userSTime,
         userVehicleNumber,
         travelCharges,
+        activeUser.mobile,
+        userCity,
       ),
     );
 
@@ -64,6 +67,7 @@ export function UseCreateAd() {
     setUserVehicle('')
     setUserVehicleNumber('')
     setTravelCharges('')
+    setUserCity('');
     
   };
 

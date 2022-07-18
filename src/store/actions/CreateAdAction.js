@@ -14,6 +14,8 @@ export const CreateAdAction =
     userSTime,
     userVehicleNumber,
     travelCharges,
+    mobile,
+    userCity,
   ) =>
   async dispatch => {
     console.log(
@@ -28,9 +30,11 @@ export const CreateAdAction =
       userSTime,
       userVehicleNumber,
       travelCharges,
+      mobile,
+      userCity,
     );
 
-    // is m ay city add honay vala rehta h 
+    // is m ay city add honay vala rehta h
 
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
@@ -47,6 +51,8 @@ export const CreateAdAction =
       description: 'hello i am owner of car',
       userVehicleNumber,
       travelCharges,
+      mobile,
+      userCity,
     });
 
     var requestOptions = {
@@ -59,12 +65,13 @@ export const CreateAdAction =
     fetch(`${endPoint}/user/addCard`, requestOptions)
       .then(response => response.text())
       .then(result => {
-        console.log(result);
+        console.log(JSON.parse(result));
         if (JSON.parse(result).status === 'success') {
           Alert.alert('🎉', JSON.parse(result).message);
         }
       })
-      .catch(error => {console.log('error', error)
-      Alert.alert('🎉', JSON.parse(error).message);
-    });
+      .catch(error => {
+        console.log('error', error);
+        Alert.alert('🎉', JSON.parse(error).message);
+      });
   };
